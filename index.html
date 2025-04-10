@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .lightning-hover {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .lightning-hover::before {
+      content: '⚡';
+      position: absolute;
+      top: 50%;
+      left: -30px;
+      transform: translateY(-50%);
+      font-size: 1.25rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .lightning-hover:hover::before {
+      animation: lightning-strike 0.5s linear forwards;
+    }
+
+    @keyframes lightning-strike {
+      0% {
+        left: -30px;
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      50% {
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      70% {
+        left: 100%;
+        opacity: 1;
+      }
+      100% {
+        left: 130%;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main w-full">
+    <nav class="w-full flex fixed top-0 left-0 px-10 py-3 justify-between">
+      <img class="w-[150px] mix-blend-screen filter saturate-150 contrast-125" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSObc48kanH977lmMXTUFCVnW0arvp58q_jg&s" alt="">
+      <div class="links flex gap-5 items-center">
+        <a href="" class="tracking-tight text-white  transition-colors lightning-hover text-xl font-bold">Games</a>
+        <a href="" class="tracking-tight text-white  transition-colors lightning-hover text-xl font-bold">News</a>
+        <a href="" class="tracking-tight text-white  transition-colors lightning-hover text-xl font-bold">Community</a>
+        <a href="" class="tracking-tight text-white  transition-colors lightning-hover text-xl font-bold">Shop</a>
+        <a href="" class="tracking-tight text-white  transition-colors lightning-hover text-xl font-bold">Support</a>
+      </div>
+    </nav>
+    <div class="w-full h-screen overflow-hidden">
+      <img class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src="https://i.pinimg.com/originals/63/88/e1/6388e1c9998627898fe7241187ab1a6d.png" alt="">
+      <canvas id="canvas"></canvas>
+
+    </div>
+    <div class="w-full h-screen"></div>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
